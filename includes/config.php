@@ -1,12 +1,12 @@
 <?php
 //configuracion de la base de datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'nombre_de_la_base_de_datos');
-define('DB_USER', 'usuario_de_la_base_de_datos');
-define('DB_PASS', 'contraseña_de_la_base_de_datos');
+define('DB_NAME', 'catcode_cms');
+define('DB_USER', 'root');
+define('DB_PASS', 'nullMysql3(');
 
 //URL base del proyecto
-define('BASE_URL', 'http://localhost/tu_proyecto/');
+define('BASE_URL', 'http://localhost:8001');
 
 //ruta del servidor 
 define('BASE_PATH', __DIR__. '/..');

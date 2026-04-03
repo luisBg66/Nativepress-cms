@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/../../includes/config.php';
 require_once __DIR__ . '/../../includes/db.php';
 require_once __DIR__ . '/../../includes/helpers.php';
-
+require_once __DIR__ . '/../../includes/upload.php';
 requireLogin();
 
 $error = '';
@@ -20,26 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'El título es obligatorio.';
     } else {
         // Manejo de imagen
-        if (!empty($_FILES['imagen']['name'])) {
-            $ext         = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-            $permitidos  = ['jpg', 'jpeg', 'png', 'webp'];
+if (!empty($_FILES['imagen']['name'])) {
+    $resultado = subirImagen($_FILES['imagen'], 'proyectos', 'proj_');
 
-            if (!in_array($ext, $permitidos)) {
-                $error = 'Formato de imagen no permitido.';
-            } elseif ($_FILES['imagen']['size'] > MAX_FILE_SIZE) {
-                $error = 'La imagen supera el tamaño máximo de 2MB.';
-            } else {
-                $nombreArchivo = uniqid('proj_') . '.' . $ext;
-                $destino       = UPLOAD_PATH . '/proyectos/' . $nombreArchivo;
-
-                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $destino)) {
-                    $imagen = $nombreArchivo;
-                } else {
-                    $error = 'Error al subir la imagen.';
-                }
-            }
-        }
-
+    if (isset($resultado['error'])) {
+        $error = $resultado['error'];
+    } else {
+        $imagen = $resultado['archivo'];
+    }
+}
         if (empty($error)) {
             $stmt = $pdo->prepare('INSERT INTO proyectos (titulo, descripcion, imagen, activo, orden) VALUES (?, ?, ?, ?, ?)');
             $stmt->execute([$titulo, $descripcion, $imagen, $activo, $orden]);

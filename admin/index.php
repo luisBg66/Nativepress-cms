@@ -27,6 +27,7 @@ $totalPublicados = $pdo->query('SELECT COUNT(*) FROM articulos WHERE publicado =
             <a href="<?= BASE_URL ?>/admin/proyectos/index.php" class="text-white text-decoration-none">Proyectos</a>
             <a href="<?= BASE_URL ?>/admin/blog/index.php" class="text-white text-decoration-none">Blog</a>
             <a href="<?= BASE_URL ?>/admin/logout.php" class="text-danger text-decoration-none">Cerrar sesión</a>
+            <a href="<?= BASE_URL ?>/admin/contacto/index.php" class="text-white text-decoration-none">Mensajes</a>
         </div>
     </nav>
 

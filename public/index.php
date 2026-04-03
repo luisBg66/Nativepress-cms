@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/helpers.php';
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 
@@ -7,6 +11,28 @@ $proyectos = $pdo->query('SELECT * FROM proyectos WHERE activo = 1 ORDER BY orde
 
 // Obtener últimos 3 artículos publicados
 $articulos = $pdo->query('SELECT id, titulo, slug, imagen_portada, created_at FROM articulos WHERE publicado = 1 ORDER BY created_at DESC LIMIT 3')->fetchAll();
+
+
+
+// Procesar formulario de contacto
+$contactoError = '';
+$contactoExito = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contacto'])) {
+    $nombre  = clean($_POST['nombre'] ?? '');
+    $email   = clean($_POST['email'] ?? '');
+    $mensaje = clean($_POST['mensaje'] ?? '');
+
+    if (empty($nombre) || empty($email) || empty($mensaje)) {
+        $contactoError = 'Todos los campos son obligatorios.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $contactoError = 'El correo no es válido.';
+    } else {
+        $stmt = $pdo->prepare('INSERT INTO contacto (nombre, email, mensaje) VALUES (?, ?, ?)');
+        $stmt->execute([$nombre, $email, $mensaje]);
+        $contactoExito = '¡Mensaje enviado! Me pondré en contacto pronto.';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -161,37 +187,44 @@ $articulos = $pdo->query('SELECT id, titulo, slug, imagen_portada, created_at FR
             <?php endif; ?>
         </div>
     </section>
+<!-- Contacto -->
+<section id="contacto" class="seccion">
+    <div class="container">
+        <h2 class="fw-bold text-center mb-5">Contacto</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
 
-    <!-- Contacto -->
-    <section id="contacto" class="seccion">
-        <div class="container">
-            <h2 class="fw-bold text-center mb-5">Contacto</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-                            <form>
-                                <div class="mb-3">
-                                    <label class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Tu nombre">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Correo</label>
-                                    <input type="email" class="form-control" placeholder="tu@correo.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Mensaje</label>
-                                    <textarea class="form-control" rows="4" placeholder="¿En qué te puedo ayudar?"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-dark w-100">Enviar mensaje</button>
-                            </form>
-                        </div>
+                <?php if ($contactoError): ?>
+                    <div class="alert alert-danger"><?= $contactoError ?></div>
+                <?php endif; ?>
+                <?php if ($contactoExito): ?>
+                    <div class="alert alert-success"><?= $contactoExito ?></div>
+                <?php endif; ?>
+
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form method="POST">
+                            <input type="hidden" name="contacto" value="1">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Correo</label>
+                                <input type="email" name="email" class="form-control" placeholder="tu@correo.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mensaje</label>
+                                <textarea name="mensaje" class="form-control" rows="4" placeholder="¿En qué te puedo ayudar?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100">Enviar mensaje</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
         <p class="mb-0">© <?= date('Y') ?> Cat Code — Todos los derechos reservados.</p>

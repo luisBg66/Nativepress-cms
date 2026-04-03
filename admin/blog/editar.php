@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/../../includes/config.php';
 require_once __DIR__ . '/../../includes/db.php';
 require_once __DIR__ . '/../../includes/helpers.php';
-
+require_once __DIR__ . '/../../includes/upload.php';
 requireLogin();
 
 $id = (int)($_GET['id'] ?? 0);
@@ -33,29 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'El título es obligatorio.';
     } else {
         // Manejo de imagen nueva
-        if (!empty($_FILES['imagen_portada']['name'])) {
-            $ext        = strtolower(pathinfo($_FILES['imagen_portada']['name'], PATHINFO_EXTENSION));
-            $permitidos = ['jpg', 'jpeg', 'png', 'webp'];
+if (!empty($_FILES['imagen_portada']['name'])) {
+    $resultado = subirImagen($_FILES['imagen_portada'], 'blog', 'blog_');
 
-            if (!in_array($ext, $permitidos)) {
-                $error = 'Formato de imagen no permitido.';
-            } elseif ($_FILES['imagen_portada']['size'] > MAX_FILE_SIZE) {
-                $error = 'La imagen supera el tamaño máximo de 2MB.';
-            } else {
-                $nombreArchivo = uniqid('blog_') . '.' . $ext;
-                $destino       = UPLOAD_PATH . '/blog/' . $nombreArchivo;
-
-                if (move_uploaded_file($_FILES['imagen_portada']['tmp_name'], $destino)) {
-                    // Eliminar imagen anterior
-                    if ($articulo['imagen_portada'] && file_exists(UPLOAD_PATH . '/blog/' . $articulo['imagen_portada'])) {
-                        unlink(UPLOAD_PATH . '/blog/' . $articulo['imagen_portada']);
-                    }
-                    $imagen_portada = $nombreArchivo;
-                } else {
-                    $error = 'Error al subir la imagen.';
-                }
-            }
-        }
+    if (isset($resultado['error'])) {
+        $error = $resultado['error'];
+    } else {
+        eliminarImagen('blog', $articulo['imagen_portada']);
+        $imagen_portada = $resultado['archivo'];
+    }
+}
 
         if (empty($error)) {
             $stmt = $pdo->prepare('UPDATE articulos SET titulo = ?, contenido = ?, imagen_portada = ?, publicado = ? WHERE id = ?');

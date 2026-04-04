@@ -50,7 +50,7 @@ if (!empty($_FILES['imagen_portada']['name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Artículo — Cat Code CMS</title>
+    <title>Nuevo Artículo — Nativepress-cms</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
      <script src="<?= BASE_URL ?>/public/assets/tinymce/tinymce.min.js"></script>
     <script>
@@ -66,7 +66,7 @@ if (!empty($_FILES['imagen_portada']['name'])) {
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <span class="navbar-brand fw-bold">Cat Code CMS</span>
+        <span class="navbar-brand fw-bold">Nativepress-cms</span>
         <div class="d-flex gap-3">
             <a href="<?= BASE_URL ?>/admin/index.php" class="text-white text-decoration-none">Dashboard</a>
             <a href="<?= BASE_URL ?>/admin/blog/index.php" class="text-white text-decoration-none">Blog</a>

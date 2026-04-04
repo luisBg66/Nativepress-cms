@@ -9,7 +9,7 @@ $articulos = $pdo->query('SELECT * FROM articulos WHERE publicado = 1 ORDER BY c
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Cat Code</title>
+    <title>Blog — Nativepress-cms</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -18,7 +18,7 @@ $articulos = $pdo->query('SELECT * FROM articulos WHERE publicado = 1 ORDER BY c
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>/public/index.php">Cat Code</a>
+        <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>/public/index.php">Nativepress-cms</a>
         <a href="<?= BASE_URL ?>/public/index.php" class="text-white text-decoration-none">← Volver al inicio</a>
     </nav>
 
@@ -50,7 +50,7 @@ $articulos = $pdo->query('SELECT * FROM articulos WHERE publicado = 1 ORDER BY c
     </div>
 
     <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0">© <?= date('Y') ?> Cat Code — Todos los derechos reservados.</p>
+        <p class="mb-0">© <?= date('Y') ?> Nativepress-cms — Todos los derechos reservados.</p>
     </footer>
 
     <script src="<?= BASE_URL ?>/public/assets/js/bootstrap.bundle.min.js"></script>

@@ -62,13 +62,13 @@ if (!empty($_FILES['imagen']['name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Proyecto — Cat Code CMS</title>
+    <title>Editar Proyecto — Nativepress-cms</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <span class="navbar-brand fw-bold">Cat Code CMS</span>
+        <span class="navbar-brand fw-bold">Nativepress-cms</span>
         <div class="d-flex gap-3">
             <a href="<?= BASE_URL ?>/admin/index.php" class="text-white text-decoration-none">Dashboard</a>
             <a href="<?= BASE_URL ?>/admin/proyectos/index.php" class="text-white text-decoration-none">Proyectos</a>

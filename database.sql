@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS catcode_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS nativepress_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-USE catcode_cms;
+USE nativepress_cms;
 
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,

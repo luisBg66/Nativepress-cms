@@ -1,7 +1,7 @@
 <?php
 //configuracion de la base de datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'catcode_cms');
+define('DB_NAME', 'nativepress_cms');
 define('DB_USER', 'root');
 define('DB_PASS', 'nullMysql3(');
 

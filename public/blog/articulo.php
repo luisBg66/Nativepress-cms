@@ -24,13 +24,13 @@ if (!$articulo) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($articulo['titulo']) ?> — Cat Code</title>
+    <title><?= htmlspecialchars($articulo['titulo']) ?> — Nativepress-cms</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>/public/index.php">Cat Code</a>
+        <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>/public/index.php">Nativepress-cms</a>
         <a href="<?= BASE_URL ?>/public/blog/index.php" class="text-white text-decoration-none">← Volver al blog</a>
     </nav>
 
@@ -55,7 +55,7 @@ if (!$articulo) {
     </div>
 
     <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0">© <?= date('Y') ?> Cat Code — Todos los derechos reservados.</p>
+        <p class="mb-0">© <?= date('Y') ?> Nativepress-cms — Todos los derechos reservados.</p>
     </footer>
 
     <script src="<?= BASE_URL ?>/public/assets/js/bootstrap.bundle.min.js"></script>

@@ -13,13 +13,13 @@ $articulos = $pdo->query('SELECT * FROM articulos ORDER BY created_at DESC')->fe
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Cat Code CMS</title>
+    <title>Blog — Nativepress-cms</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <span class="navbar-brand fw-bold">Cat Code CMS</span>
+        <span class="navbar-brand fw-bold">Nativepress-cms</span>
         <div class="d-flex gap-3">
             <a href="<?= BASE_URL ?>/admin/index.php" class="text-white text-decoration-none">Dashboard</a>
             <a href="<?= BASE_URL ?>/admin/proyectos/index.php" class="text-white text-decoration-none">Proyectos</a>

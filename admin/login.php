@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — Cat Code CMS</title>
+    <title>Login — Nativepress-cms</title>
     <link rel="stylesheet" href="/public/assets/css/bootstrap.min.css">
     <style>
         body {
@@ -62,7 +62,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <div class="text-center mb-3">
             <img src="/public/assets/img/logo.png" alt="Logo" class="login-logo" onerror="this.style.display='none'">
             <h3 class="mb-0">Iniciar sesión</h3>
-            <small class="text-muted">Panel de administración</small>
+            <small class="text-muted">Panel de administración Nativepress-cms</small>
         </div>
         <?php if ($error): ?>
             <?= mensaje($error, 'danger') ?>

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contacto'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Code — Portafolio</title>
+    <title>Nativepress-cms — Portafolio</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/bootstrap.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contacto'])) {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Cat Code</a>
+            <a class="navbar-brand fw-bold" href="#">Nativepress-cms</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contacto'])) {
     <!-- Hero -->
     <section id="hero" class="d-flex align-items-center justify-content-center text-center">
         <div>
-            <h1 class="display-3 fw-bold">Hola, soy <span class="text-warning">Cat Code</span></h1>
+            <h1 class="display-3 fw-bold">Hola, soy <span class="text-warning">Nativepress-cms</span></h1>
             <p class="lead mt-3 mb-4">Desarrollo web a medida — limpio, rápido y profesional.</p>
             <a href="#portafolio" class="btn btn-warning btn-lg me-2">Ver portafolio</a>
             <a href="#contacto" class="btn btn-outline-light btn-lg">Contacto</a>
@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contacto'])) {
 </section>
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
-        <p class="mb-0">© <?= date('Y') ?> Cat Code — Todos los derechos reservados.</p>
+        <p class="mb-0">© <?= date('Y') ?> Nativepress-cms — Todos los derechos reservados.</p>
     </footer>
 
     <script src="<?= BASE_URL ?>/public/assets/js/bootstrap.bundle.min.js"></script>
